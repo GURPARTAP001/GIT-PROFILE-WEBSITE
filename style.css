@@ -15,16 +15,18 @@ font-family: 'Roboto Slab', serif;
 }
 
 body {
-    background-image: linear-gradient(135deg, #43CBFF 10%, #9708CC 100%);
+    background-image: linear-gradient(135deg, #6B73FF 10%, #000DFF 100%);
     font-family: 'Poppins', sans-serif;
 }
 
-header{
+header {
     display: flex;
     justify-content: space-between;
 }
-header h1{
+
+header h1 {
     margin-left: 20px;
+    cursor: pointer;
 }
 
 header form {
@@ -32,7 +34,7 @@ header form {
     margin-top: 10px;
 }
 
-header form input{
+header form input {
     width: 250px;
     height: 30px;
     outline: none;
@@ -40,52 +42,95 @@ header form input{
     padding: 8px;
 }
 
-main{
+main {
     margin-top: 50px;
     display: flex;
-    justify-content: center;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    align-items: center;
+    height: 100%;
+    align-items: center;
 }
-.profile{
+
+#mainHeading {
+    width: 420px;
+    margin-top: 40px;
+    margin-inline: auto;
+    text-align: center;
+    background-image: linear-gradient(135deg, #65FDF0 10%, #1D6FA3 100%);
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.profile {
     display: flex;
-    background-color: #fff;
-    width: 60vw;
-    height: 50vh;
+    width: 580px;
+    height: 180px;
     justify-content: space-between;
+    border-radius: 10px;
+    background-image: linear-gradient(135deg, #C2FFD8 10%, #465EFB 100%);
+    margin-bottom: 30px;
+    margin-left: 35px;
+    
+    
 }
 
-.left{
-    margin-left: 15px;
-    margin-block: auto;
-    background-color: black;
+.left {
+    width: 131px;
+    height: 100%;
 }
 
-.left img{
+.left img {
+    
+    margin-left: 16px;
+    margin-top: 20px;
     border: 2px solid black;
     border-radius: 30px;
-    width: 80px;
+    width: 75px;
+    height: 75px;
 }
 
-.right{
+.repolink {
+    text-align: center;
+}
+
+.right {
     display: flex;
     flex-direction: column;
-   align-items: center;
+    align-items: center;
+    width: 590px;
+    height: 168px;
 }
 
-.right p{
+.right h2 {
+    margin-top: 12px;
+}
+
+.right p {
+    margin-top: 10px;
     text-align: center;
+    overflow: auto;
 
 }
 
-.tags{
-    margin-top: 20px;
-    /* background-color:pink; */
+.tags {
+    margin-top: 10px;
+    margin-bottom: 0px;
     display: flex;
     justify-content: space-evenly;
-    width: 100%;
+    flex-wrap: wrap;
+    width: 80%;
+    align-items: center;
 }
 
-.tags span{
+.tags span {
     padding-inline: 11px;
-    background-color:orange;
+    background-color: orange;
     border-radius: 15px;
+    margin-inline: 24px;
+    margin-bottom: 3px;
+}
+
+.twitter{
+    margin-top: 10px;
 }
