@@ -62,8 +62,12 @@ async function getUser(u) {
     const resp = await fetch(APIURL + u);
     const respdata = await resp.json();
     console.log(respdata)
+
+    getrepos(u);
     return respdata;
 }
+
+
 
 async function showSearch(a) {
 
@@ -80,22 +84,23 @@ async function showSearch(a) {
     mainHeading.innerHTML = `The Searched Profile`
     main.innerHTML = ``;
     const profile = document.createElement("div");
-    profile.classList.add("profile");
-    profile.innerHTML = `<div class="left">
-        <img src=${pro.avatar_url} alt="">
-        <a href="${pro.html_url}" target="blank_" class="repolink">Repository Link</a>
+    profile.classList.add("profile1");
+    profile.innerHTML = `<img src="${pro.avatar_url}" alt="">
+    <h1>${pro.login}</h1>
+    <p>${pro.bio}</p>
+    <div class="tags1">
+        <span class="stags">Followers:${pro.followers}</span>
+        <span class="stags">Following:${pro.following}</span>
+        <span class="stags">No. Of Repos:${pro.public_repos}</span>
     </div>
+    <a href="${pro.html_url}" target="blank_">Profile Link</a>
+    <h2>repo's:-</h2>
+    <div id="repos1">
+        <span class="stags">dfhdfhdf</span>
+        ${pro.repos_url.forEach(a>={
 
-    <div class="right">
-        <h2>${pro.login}</h2>
-        <p>${pro.bio}</p>
-        <div class="tags">
-            <span><i class="uil uil-code-branch">NO.OF Repos:${pro.public_repos}</i></span>
-            <span>followers:${pro.followers}</span>
-            <span><i class="uil uil-star">following:${pro.following}</i></span>
-            
-        </div>
-        <h3 class="twitter">Twitter USerName : ${pro.twitter_username}</h3>
+
+        })}
     </div>`
     main.appendChild(profile);}
 }
