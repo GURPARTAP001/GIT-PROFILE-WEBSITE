@@ -1,3 +1,5 @@
+window.addEventListener("load",()=>
+{
 // below is the api url to fetch the searched profile
 const APIURL = "https://api.github.com/users/";
 //below is the api url to fetch the top profiles
@@ -23,7 +25,7 @@ async function mostviewed() {
 // mostviewed();
 
 async function showTop() {
-    mainHeading.innerHTML = `Some OF The Top Repositories:-`
+    mainHeading.innerHTML = `Trending Repositories:-`
     const pro = await mostviewed();
     pro.items.forEach(a => {
         const profile = document.createElement("div");
@@ -62,17 +64,20 @@ async function getUser(u) {
     const resp = await fetch(APIURL + u);
     const respdata = await resp.json();
     console.log(respdata)
-
-    getrepos(u);
+    const Repos_url=respdata.repos_url;
+    getrepos(Repos_url);
     return respdata;
 }
 
-
+async function getrepos(u){
+    const resp = await fetch(u);
+    const respdata = await resp.json();
+    // console.log(respdata)
+    addreposToCard(respdata);
+    
+}
 
 async function showSearch(a) {
-
-
-
     const pro = await getUser(a);
     if(pro.message==="Not Found"){
         mainHeading.innerHTML = `The Searched Profile Is Invalid`
@@ -94,15 +99,22 @@ async function showSearch(a) {
         <span class="stags">No. Of Repos:${pro.public_repos}</span>
     </div>
     <a href="${pro.html_url}" target="blank_">Profile Link</a>
-    <h2>repo's:-</h2>
+    <h2>Repositories :-:-</h2>
     <div id="repos1">
-        <span class="stags">dfhdfhdf</span>
-        ${pro.repos_url.forEach(a>={
-
-
-        })}
     </div>`
     main.appendChild(profile);}
+}
+
+function addreposToCard(repos){
+    const repoDiv=document.getElementById('repos1');
+    console.log(repos);
+    repos.slice(0,20).forEach(m =>{
+
+        const span=document.createElement('span');
+        span.classList.add("stags")
+        span.innerHTML=`<a href="${m.clone_url}" target="blank_">${m.name}</a>`
+        repoDiv.appendChild(span);
+    })
 }
 
 form.addEventListener("submit", (e) => {
@@ -117,4 +129,5 @@ form.addEventListener("submit", (e) => {
         form.reset();
         alert("Please Enter Valid User-Name");
     }
+})
 })
